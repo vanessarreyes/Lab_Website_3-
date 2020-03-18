@@ -17,7 +17,7 @@
 				  %>
 				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
 				  <div class="card-body mx-auto">
-					<form class="form" action="/player_info/post" method="get">
+					<form class="form" action="/player_info/select_player" method="get">
 						<select class="custom-select" name="player_choice" onchange="this.form.submit()">
 							<%
 							if(id == '') {

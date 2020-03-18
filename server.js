@@ -95,6 +95,8 @@ app.get('/register', function(req, res) {
 });
 
 /*Add your other get/post request handlers below here: */
+
+// get for home page
 app.get('/home', function(req, res) {
 	var query = 'select * from favorite_colors;';
 	db.any(query)
@@ -119,6 +121,7 @@ app.get('/home', function(req, res) {
         })
 });
 
+// get for home page for pick color
 app.get('/home/pick_color', function(req, res) {
 	var color_choice = req.query.color_selection;
 	var color_options =  'select * from favorite_colors;';
@@ -150,6 +153,7 @@ app.get('/home/pick_color', function(req, res) {
 
 });
 
+// post for home page pick color
 app.post('/home/pick_color', function(req, res) {
 	var color_hex = req.body.color_hex;
 	var color_name = req.body.color_name;
@@ -185,6 +189,7 @@ app.post('/home/pick_color', function(req, res) {
 });
 
 // team_stats get request
+// fill the tables with the information from databases
 app.get('/team_stats', function(req, res) {
   var query_all = 'SELECT * FROM football_games';
   var query_win = 'SELECT COUNT(*) FROM football_games WHERE home_score > visitor_score';
@@ -242,7 +247,8 @@ app.get('/player_info', function(req, res) {
      });
 });
 
-app.get('/player_info/post', function(req, res) {
+// get for player info
+app.get('/player_info/select_player', function(req, res) {
   var query = 'SELECT id, name FROM football_players';
   var player_id = req.query.player_choice;
   var query_player = "SELECT * FROM football_players WHERE id ='" + player_id + "'";
